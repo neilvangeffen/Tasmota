@@ -427,6 +427,9 @@ enum SupportedModules {
   EXS_DIMMER,
   PWM_DIMMER,
   SONOFF_D1,
+  KS811_1,
+  KS811_2,
+  KS811_3,
   MAXMODULE};
 
 #define USER_MODULE        255
@@ -874,6 +877,9 @@ const uint8_t kModuleNiceList[] PROGMEM = {
   OBI2,
   MANZOKU_EU_4,
   ESP_SWITCH,          // Switch Devices
+  KS811_1,
+  KS811_2,
+  KS811_3,
 #ifdef USE_TUYA_MCU
   TUYA_DIMMER,         // Dimmer Devices
 #endif
@@ -2272,6 +2278,63 @@ const mytmplt kModules[MAXMODULE] PROGMEM = {
      0,                // GPIO12
      GPIO_LED1_INV,    // GPIO13 WiFi Blue Led - Link and Power status
      0, 0, 0, 0
+  },
+  { "KS-811 Single",  // SONOFF_BASIC - Sonoff Basic (ESP8266)
+     GPIO_SWT1,        // GPIO00 Button
+     0,                // GPIO01 Serial RXD and Optional sensor
+     0,                // GPIO02 Only available on newer Sonoff Basic R2 V1
+     0,                // GPIO03 Serial TXD and Optional sensor
+     0,                // GPIO04 Optional sensor
+     0,                // GPIO05
+                       // GPIO06 (SD_CLK   Flash)
+                       // GPIO07 (SD_DATA0 Flash QIO/DIO/DOUT)
+                       // GPIO08 (SD_DATA1 Flash QIO/DIO/DOUT)
+     0,                // GPIO09 (SD_DATA2 Flash QIO or ESP8285)
+     0,                // GPIO10 (SD_DATA3 Flash QIO or ESP8285)
+                       // GPIO11 (SD_CMD   Flash)
+     GPIO_REL1,        // GPIO12 Red Led and Relay (0 = Off, 1 = On)
+     GPIO_LED1_INV,        // GPIO13 Green Led (0 = On, 1 = Off) - Link and Power status
+     0, 0, 0, 0
+  },
+  { "KS-811 Double",  // SONOFF_BASIC - Sonoff Basic (ESP8266)
+     0,                // GPIO00 Button
+     0,                // GPIO01 Serial RXD and Optional sensor
+     GPIO_LED1_INV,    // GPIO02 Only available on newer Sonoff Basic R2 V1
+     0,                // GPIO03 Serial TXD and Optional sensor
+     0,                // GPIO04 Optional sensor
+     GPIO_SWT2,        // GPIO05
+                       // GPIO06 (SD_CLK   Flash)
+                       // GPIO07 (SD_DATA0 Flash QIO/DIO/DOUT)
+                       // GPIO08 (SD_DATA1 Flash QIO/DIO/DOUT)
+     0,                // GPIO09 (SD_DATA2 Flash QIO or ESP8285)
+     0,                // GPIO10 (SD_DATA3 Flash QIO or ESP8285)
+                       // GPIO11 (SD_CMD   Flash)
+     GPIO_REL2,        // GPIO12 Red Led and Relay (0 = Off, 1 = On)
+     GPIO_REL1,        // GPIO13 Green Led (0 = On, 1 = Off) - Link and Power status
+     0,                // GPIO14 Optional sensor
+     0,                // GPIO15
+     GPIO_SWT1,        // GPIO16
+     0                 // ADC0 Analog input
+  },
+  { "KS-811 Triple",   // SONOFF_BASIC - Sonoff Basic (ESP8266)
+     0,                // GPIO00 Button
+     0,                // GPIO01 Serial RXD and Optional sensor
+     GPIO_LED1_INV,    // GPIO02 Only available on newer Sonoff Basic R2 V1
+     0,                // GPIO03 Serial TXD and Optional sensor
+     GPIO_SWT3,        // GPIO04 Optional sensor
+     GPIO_SWT2,        // GPIO05
+                       // GPIO06 (SD_CLK   Flash)
+                       // GPIO07 (SD_DATA0 Flash QIO/DIO/DOUT)
+                       // GPIO08 (SD_DATA1 Flash QIO/DIO/DOUT)
+     0,                // GPIO09 (SD_DATA2 Flash QIO or ESP8285)
+     0,                // GPIO10 (SD_DATA3 Flash QIO or ESP8285)
+                       // GPIO11 (SD_CMD   Flash)
+     GPIO_REL2,        // GPIO12 Red Led and Relay (0 = Off, 1 = On)
+     GPIO_REL1,        // GPIO13 Green Led (0 = On, 1 = Off) - Link and Power status
+     GPIO_REL3,        // GPIO14 Optional sensor
+     0,                // GPIO15
+     GPIO_SWT1,        // GPIO16
+     0                 // ADC0 Analog input
   }
 };
 
